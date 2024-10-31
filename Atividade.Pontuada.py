@@ -1,7 +1,7 @@
 import os
 os.system("cls|| clear")
 
-contador = 0
+contador = 0git
 def logo_categoria():
     os.system("cls || clear")
     print("""
