@@ -26,33 +26,35 @@ def logo_pagamentos():
 =================================
 """)
 
-logo_categoria()
-livros = input ("Digite a categoria desejada: ").strip().lower()
 
 def valor_livros(livros):
     while True:
         if livros == 'Romance':
-            valor = 40
+            return 40
         elif livros == 'Comedia':
-            valor = 30
+            return 30
         elif livros =='Autoajuda': 
-            valor = 25
+            return 25
         else:
-            valor = 45
-        return valor
+           return 45 
 
-def descontos_acrescimo(livros):
+def descontos_acrescimo(valor, pagamento):
     credito =  0.10
-    debito =  0.15
-    pix =  0.15
+    debito_pix =  0.15
+    
     if pagamento == 'credito':
-        valor_livros - credito
-    elif pagamento == 'debito':
-        valor_livros + debito
+        return valor * (1 + credito)
+    elif pagamento in ['debito', 'pix']:
+        return valor * (1 - debito_pix)
     else:
-        valor_livros + debito
-    return  valor_livros - credito, valor_livros + debito, valor_livros+ pix
+        return valor 
+
+
+logo_categoria()
+livros = input ("Digite a categoria desejada: ").strip().lower()
+valor = valor_livros(livros)
 
 logo_pagamentos()
 pagamento = input("Digite a forma de pagamento: ")
-metodo_escolhido = descontos_acrescimo(pagamento)
+preco_final = descontos_acrescimo(valor, pagamento)
+print(f"O preço final do livro na categoria {livros} é: R${preco_final}")
